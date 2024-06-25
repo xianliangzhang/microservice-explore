@@ -1,0 +1,19 @@
+server:
+  port: 8060
+  servlet:
+    context-path: /order
+
+spring:
+  profiles:
+    active: common
+  application:
+    name: svc-order
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ORDERDB?serverTimeZone=UTC&useUnicode=true&characterEncoding=utf8&userSSL=false
+    username: root
+    password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848

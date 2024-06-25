@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ccc.xxx.product.mapper.ProductMapper">
+
+    <select id="list" resultType="ccc.xxx.product.entity.Product">
+        select id, name, price, stock from products
+    </select>
+
+    <select id="findByPid" resultType="ccc.xxx.product.entity.Product" parameterType="int">
+        select id, name, price, stock from products where id = #{pid}
+    </select>
+</mapper>

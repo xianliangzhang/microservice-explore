@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ccc.xxx.order.mapper.OrderMapper">
+
+    <resultMap id="OrderMap" type="ccc.xxx.order.entity.Order">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="product_id" property="productId"/>
+    </resultMap>
+
+    <select id="list" resultMap="OrderMap">
+        select id, user_id, product_id, quantity from orders
+    </select>
+
+    <insert id="save" parameterType="ccc.xxx.order.entity.Order" useGeneratedKeys="true" keyProperty="id">
+        insert into orders(user_id, product_id, quantity)
+        values(#{userId}, #{productId}, #{quantity})
+    </insert>
+</mapper>

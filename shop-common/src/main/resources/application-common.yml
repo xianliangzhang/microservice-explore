@@ -1,0 +1,4 @@
+mybatis:
+  map-underscore-to-camel-case: true
+  mapper-locations:
+    - classpath*:ccc/xxx/**/mapper/*.xml

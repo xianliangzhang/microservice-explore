@@ -1,0 +1,38 @@
+server:
+  port: 8050
+  servlet:
+    context-path: /api
+
+spring:
+  profiles:
+    active: common
+  application:
+    name: svc-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: svc-user
+        uri: lb://svc-user  # http://localhost:8070
+        predicates:
+        - Path=/api/user/**
+        filters:
+        - StripPrefix=1
+      - id: svc-product
+        uri: lb://svc-product # http://localhost:8080
+        predicates:
+          - Path=/api/product/**
+        filters:
+          - StripPrefix=1
+      - id: svc-order
+        uri: lb://svc-order # http://localhost:8060
+        predicates:
+          - Path=/api/order/**
+        filters:
+          - StripPrefix=1
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
